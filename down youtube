@@ -1,0 +1,37 @@
+//need import pytube
+
+from pytube import YouTube
+
+myVideo = YouTube("https://www.youtube.com/watch?v=fzeWc3zh01g")
+
+print("\n")
+print("*********************  title  ***********************")
+
+
+print("Video Title :"+myVideo.title)
+
+print("\n")
+print("*********************  Thumbnail image  ***********************")
+
+print(myVideo.thumbnail_url)
+
+print("\n")
+print("*********************  video streams  ***********************")
+
+print(myVideo.streams.all)
+
+print("\n")
+print("********************* download video  ***********************")
+print("********************* wait until download i finished  ***********************")
+
+myVideo.streams.first().download()
+
+print("video is download!!")
+
+print("\n")
+print("*********************  video subtitle  ***********************")
+
+caption = myVideo.captions.get_by_language_code('en')
+
+print("video english subtitle : ")
+print(caption.generate_srt_captions())
